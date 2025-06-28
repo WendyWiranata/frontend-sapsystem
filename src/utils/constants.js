@@ -1,0 +1,7 @@
+export const ROLES = {
+  SUPERADMIN: "SUPERADMIN",
+  ADMIN_PERUSAHAAN: "ADMIN_PERUSAHAAN",
+  KARYAWAN: "KARYAWAN",
+};
+
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
