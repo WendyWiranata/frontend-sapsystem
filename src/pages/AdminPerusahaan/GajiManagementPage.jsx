@@ -20,11 +20,6 @@ const GajiManagementPage = () => {
     setLoading(true);
     setError('');
     try {
-      // Admin perusahaan bisa melihat gaji semua karyawan di perusahaannya
-      // Backend Anda menyediakan getGajiByKaryawan, tapi tidak ada endpoint getAllGaji untuk admin.
-      // Kita perlu mengambil semua karyawan, lalu ambil gaji per karyawan, atau mengandalkan endpoint backend yang mengambil semua gaji di perusahaan.
-      // Untuk kesederhanaan, kita akan ambil semua karyawan, lalu untuk setiap karyawan ambil gajinya.
-      // Ini mungkin tidak efisien untuk data besar, tapi mengikuti struktur API yang ada.
 
       const allKaryawan = await karyawanService.getAllKaryawan();
       const allGajis = [];
@@ -124,7 +119,8 @@ const GajiManagementPage = () => {
           setEditingGaji(null);
           setShowForm(true);
         }}
-        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-4"
+        className="bg-green-500 hover:bg-green-600 text-black
+         font-bold py-2 px-4 rounded mb-4"
       >
         Tambah Data Gaji
       </button>

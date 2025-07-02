@@ -6,7 +6,7 @@ const CompanyTable = ({ companies, onEdit, onDelete }) => {
   }
 
   return (
-    <div className="overflow-x-auto bg-white rounded-lg shadow">
+    <div className="overflow-x-auto bg-white text-black rounded-lg shadow">
       <table className="min-w-full leading-normal">
         <thead>
           <tr>
@@ -32,8 +32,8 @@ const CompanyTable = ({ companies, onEdit, onDelete }) => {
         </thead>
         <tbody>
           {companies.map((company) => (
-            <tr key={company.id}>
-              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+            <tr key={company.id} className="text-left">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white  text-sm">
                 {company.id}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">

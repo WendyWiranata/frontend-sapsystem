@@ -1,6 +1,6 @@
 // src/pages/DashboardPage.jsx
 import React from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth'; // <-- PATH DIPERBAIKI
 
 const DashboardPage = () => {
   const { user } = useAuth();

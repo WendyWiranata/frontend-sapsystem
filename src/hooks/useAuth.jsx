@@ -1,7 +1,6 @@
-// src/hooks/useAuth.jsx (KODE DIPERBAIKI)
 import { useState, useEffect, createContext, useContext } from 'react';
 import authService from '../services/auth.service';
-import jwtDecode from 'jwt-decode'; // DIKOREKSI: Menggunakan default import
+import { jwtDecode } from 'jwt-decode'; // DIUBAH: Gunakan named import { jwtDecode }
 
 const AuthContext = createContext(null);
 
@@ -10,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(authService.getToken());
   const [isAuthenticated, setIsAuthenticated] = useState(!!user && !!token);
   const [userRole, setUserRole] = useState(null);
-  const [loading, setLoading] = useState(true); // DIKOREKSI: Menambahkan useState()
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = authService.getCurrentUser();
@@ -18,15 +17,13 @@ export const AuthProvider = ({ children }) => {
 
     if (storedUser && storedToken) {
       try {
-        const decodedToken = jwtDecode(storedToken); // Gunakan jwtDecode
-        // Cek apakah token masih berlaku
+        const decodedToken = jwtDecode(storedToken);
         if (decodedToken.exp * 1000 > Date.now()) {
           setUser(storedUser);
           setToken(storedToken);
           setIsAuthenticated(true);
           setUserRole(storedUser.role);
         } else {
-          // Token expired
           authService.logout();
           setUser(null);
           setToken(null);
@@ -34,7 +31,6 @@ export const AuthProvider = ({ children }) => {
           setUserRole(null);
         }
       } catch (error) {
-        // Token invalid
         console.error("Invalid token:", error);
         authService.logout();
         setUser(null);
@@ -92,6 +88,7 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
+// HANYA ADA SATU DEKLARASI INI
 export const useAuth = () => {
   return useContext(AuthContext);
 };

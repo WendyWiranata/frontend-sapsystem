@@ -24,7 +24,7 @@ const GajiTable = ({ gajis, onEdit, onDelete, showKaryawanInfo = true }) => {
   };
 
   return (
-    <div className="overflow-x-auto bg-white rounded-lg shadow">
+    <div className="overflow-x-auto bg-white text-black rounded-lg shadow">
       <table className="min-w-full leading-normal">
         <thead>
           <tr>
